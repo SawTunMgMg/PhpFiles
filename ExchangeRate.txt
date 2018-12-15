@@ -1,0 +1,21 @@
+<?php 
+
+function httpPost($url, $data)
+{
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, array());
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($curl);
+curl_close($curl);
+return $response;
+}
+
+// Send a request
+
+$result = httpPost('https://openexchangerates.org/api/latest.json?app_id=a9c86d6e8fa54f658f08d6feb369af05', NULL);
+
+// print the result of the whole request:
+echo $result;
+
+?>
