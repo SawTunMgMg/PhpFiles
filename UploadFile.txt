@@ -1,0 +1,13 @@
+<?php
+
+$file = $_FILES['myfile']['name'];
+$file_loc = $_FILES['myfile']['tmp_name'];
+$folder="uploads/";
+if(move_uploaded_file($file_loc,$folder.$file))
+{
+echo 'successfully uploaded';
+}else{
+echo ('error while uploading file');
+} 
+
+?>
