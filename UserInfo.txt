@@ -1,0 +1,32 @@
+<?php
+$host="localhost"; // Host name
+$username="id7060552_userinformation"; // Mysql username
+$password="11211121"; // Mysql password *********
+$db_name="id7060552_userinformation"; // Database name
+$tbl_name="user"; // Table name
+
+// Define $myusername and $mypassword
+$myusername=$_POST['name'];
+$myemail=$_POST['email'];
+$mypassword=$_POST['password'];
+
+$myusername=htmlspecialchars($myusername);
+$myemail=htmlspecialchars($myemail);
+$mypassword=htmlspecialchars($mypassword);
+
+try {
+$conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+// set the PDO error mode to exception
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$sql = "INSERT INTO user (Name, Email, Password)
+VALUES ('$myusername', '$myemail', '$mypassword')";
+
+$conn->exec($sql);
+echo "New record created successfully";
+}
+catch(PDOException $e)
+{
+echo $sql . "<br>" . $e->getMessage();
+}
+$conn = null;
+?>
